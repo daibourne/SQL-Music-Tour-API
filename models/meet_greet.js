@@ -15,6 +15,12 @@ module.exports = (sequelize, DataTypes) => {
         as: 'band'
       })
     }
+    static associate({ Event }) {
+      Meet_greet.belongsTo(Event, {
+        foreignKey: 'evemt_id',
+        as: 'event',
+      }) 
+    }
   }
   Meet_greet.init({
     event_id: {
