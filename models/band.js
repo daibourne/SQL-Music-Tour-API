@@ -3,26 +3,19 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Band extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate({ Meet_greets }) {
-      Band.hasMany(Meet_greets, {
+  class bands extends Model {
+    static associate({ Meet_greet, Set_time }) {
+      bands.hasMany(Meet_greet, {
         foreignKey: 'band_id',
-        as: 'meet_greets'
+        as: 'Meet_greet'
       })
-    }
-    static associate({ Set_times }) {
-      Band.hasMany(Set_times, {
+      bands.hasMany(Set_time, {
         foreignKey: 'band_id',
-        as: 'set_times'
+        as: 'Set_time'
       })
-    }
   }
-  Band.init({
+}
+  bands.init({
     band_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -50,5 +43,5 @@ module.exports = (sequelize, DataTypes) => {
     tableNmae: 'bands',
     timestamps: false,
   });
-  return Band;
+  return bands;
 };

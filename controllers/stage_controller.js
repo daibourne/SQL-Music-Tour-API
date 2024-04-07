@@ -17,7 +17,7 @@ stage.get('/', async (req, res) => {
 stage.get('/:id', async (req, res) => {
     try {
         const foundStage = await Stage.findOne({
-            where: { stage_id: HTMLTableRowElement.params.id }
+            where: { stage_id: HTMLTableRowElement.params.name }
         })
     } catch (error) {
         res.status(500).json(error)

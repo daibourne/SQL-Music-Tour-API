@@ -4,7 +4,7 @@ const db = require('../models')
 const { Event } = db
 
 //INDEX / SORT EVENTS ROUTE 
-Event.get('/', async (req, res) => {
+event.get('/', async (req, res) => {
     try {
         const data = await Event.find()
         const sortedData = data.sort(date)
@@ -17,10 +17,10 @@ Event.get('/', async (req, res) => {
 });
 
 //FIND A SPECIFIC EVENT
-Event.get('/:id', async (req, res) => {
+event.get('/:id', async (req, res) => {
     try {
         const foundEvent = await Event.findOne({
-            where: { event_id: req.params.id }
+            where: { event_id: req.params.name }
         })
         res.status(200).json(foundEvent)
     } catch (error) {
@@ -29,7 +29,7 @@ Event.get('/:id', async (req, res) => {
 })
 
 //CREATE A EVENT
-Event.post('/', async (req, res) => {
+event.post('/', async (req, res) => {
     try {
         const newEvent = await Event.create(req.body)
         res.status(200).json({
@@ -42,7 +42,7 @@ Event.post('/', async (req, res) => {
 })
 
 //UPDATE A EVENT 
-Event.put('/:id', async (req, res) => {
+event.put('/:id', async (req, res) => {
     try {
         const updateEvent = await Event.update(req.Event, {
             where: {
@@ -58,7 +58,7 @@ Event.put('/:id', async (req, res) => {
 })
 
 // DELETE A BAND
-Event.delete('/:id', async (req, res) => {
+event.delete('/:id', async (req, res) => {
     try {
         const deletedEvent = await Event.destroy({
             where: {

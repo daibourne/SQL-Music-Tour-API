@@ -11,14 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ Band }) {
       Meet_greet.belongsTo(Band, {
-        foreginKey: 'band_id',
-        as: 'band'
+        foreignKey: 'band_id',
+        as: 'bands'
       })
     }
     static associate({ Event }) {
       Meet_greet.belongsTo(Event, {
-        foreignKey: 'evemt_id',
-        as: 'event',
+        foreignKey: 'event_id',
+        as: 'Event',
       }) 
     }
   }
